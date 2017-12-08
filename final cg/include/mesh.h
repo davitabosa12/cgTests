@@ -46,6 +46,7 @@ public:
 	void setDrawMode( unsigned char drawMode = TriangleMesh::DRAW_TRIANGLES );
 
 	void addVertex( float x, float y, float z=0.0f );
+	void addNormal( float x, float y, float z=0.0f );
 
 	virtual void clear();
 
@@ -66,6 +67,7 @@ protected:
 
 	unsigned char drawModes;
 	VertexArray vertices;
+	VertexArray normals;
 };
 
 class RawTriangleMesh : public TriangleMesh
@@ -99,7 +101,7 @@ public:
 
 	virtual void clear() override;
 
-	void addTriangle( unsigned int indV0, unsigned int indV1, unsigned int indV2 );
+	void addTriangle( unsigned int a,unsigned int na, unsigned int b,unsigned int nb, unsigned int c, unsigned int nc);
 
 	virtual unsigned int getTriangleCount(void) const override;
 	virtual unsigned int getVertexCount(void) const override;
@@ -111,6 +113,7 @@ protected:
 	virtual void _drawVertices(void) const override;
 
 	IndexArray indices;
+	IndexArray normalIndices;
 };
 
 #endif

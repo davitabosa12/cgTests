@@ -37,6 +37,10 @@ void TriangleMesh::addVertex( float x, float y, float z )
 	vertices.push_back( Vertex(x,y,z) );
 }
 // --------------------------------------------------------------------------
+void TriangleMesh::addNormal( float x, float y, float z ){
+	normals.push_back(Vertex(x,y,z));
+}
+// --------------------------------------------------------------------------
 void TriangleMesh::draw(void) const
 {
 	if( drawModes & TriangleMesh::DRAW_TRIANGLES )

@@ -65,7 +65,9 @@ void ToyParser::parse(std::string objPath, IndexedTriangleMesh &myMesh, ModelTyp
 						}
 						else if(strcmp(tipo, "vn") == 0){ //coordenadas de normal
 							Vertex vn;
-							sscanf(line.c_str(),"%f %f %f\n", &vn.x, &vn.y, &vn.z);
+							sscanf(line.c_str(),"%*s %f %f %f\n", &vn.x, &vn.y, &vn.z);
+							myMesh.addNormal(vn.x, vn.y, vn.z);
+							std::cout << "Vertex: x = " << vn.x << " y = " << vn.y << " z = " << vn.z  << std::endl;
 							temp_normals.push_back(vn);
 						}
 						else if(strcmp(tipo, "f") == 0){ //indice de face
@@ -74,7 +76,9 @@ void ToyParser::parse(std::string objPath, IndexedTriangleMesh &myMesh, ModelTyp
 							sscanf(line.c_str(),"%*s %d%*c%*c%d %d%*c%*c%d %d%*c%*c%d\n", &vIndex[0],&vnIndex[0],
 																	 	 	 	&vIndex[1],&vnIndex[1],
 																				&vIndex[2],&vnIndex[2]);
-							myMesh.addTriangle(vIndex[0],vIndex[1],vIndex[2]);
+							myMesh.addTriangle(vIndex[0],vnIndex[0],
+											   vIndex[1],vnIndex[1],
+											   vIndex[2],vnIndex[2]);
 							/*std::cout << "vIndex: " << vIndex[0] << " "<< vIndex[1] << " "<< vIndex[2] << " "
 									<<  " vnIndex: " << vnIndex[0] << " "<< vnIndex[1] << " "<< vnIndex[2] << " "
 									<<std::endl;*/
