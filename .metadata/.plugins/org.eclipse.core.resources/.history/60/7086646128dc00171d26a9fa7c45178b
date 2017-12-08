@@ -1,0 +1,66 @@
+/*
+ * ToyParser.cpp
+ *
+ *  Created on: 7 de dez de 2017
+ *      Author: davi
+ */
+
+#include <toyparser.h>
+#include <GL/gl.h>
+
+ToyParser::ToyParser() {
+	// TODO Auto-generated constructor stub
+
+}
+
+ToyParser::~ToyParser() {
+	// TODO Auto-generated destructor stub
+}
+
+IndexedTriangleMesh ToyParser::parse(std::string objPath){
+
+	std::vector< unsigned int > vertexIndices, uvIndices, normalIndices;
+	std::vector< Vertex > temp_vertices;
+	std::vector< Vertex > temp_textures;
+	std::vector< Vertex > temp_normals;
+	IndexedTriangleMesh myMesh;
+
+	FILE *f = fopen(objPath.c_str(),"r");
+	if(f == NULL){
+		std::cout << "Nao foi possivel abrir o modelo." << std::endl;
+		throw 1;
+	}
+	while(){
+		char lineHeader[128];
+
+		int res = fscanf(f,"%s",lineHeader);
+		if (res == EOF)
+			break;
+		else{
+			if(strcmp(lineHeader,"v") == 0){ //as coordenadas sao de vertice
+				Vertex v;
+				fscanf(f,"%f %f %f\n", &v.x, &v.y, &v.z);
+				temp_vertices.push_back(v);
+				myMesh.addVertex(v.x,v.y,v.z);
+			}
+			else if(strcmp(lineHeader, "vt") == 0){ //coordenadas de textura
+				Vertex vt;
+				fscanf(f,"%f %f\n", &vt.x, &vt.y, &vt.z);
+				temp_textures.push_back(vt);
+			}
+			else if(strcmp(lineHeader, "vn") == 0){ //coordenadas de normal
+				Vertex vn;
+				fscanf(f,"%f %f %f\n", &vn.x, &vn.y, &vn.z);
+				temp_normals.push_back(vn);
+			}
+			else if(strcmp(lineHeader, "f") == 0){ //indice de face
+				unsigned int vIndex[3], vtIndex[3], vnIndex[3];
+				fscanf(f,"%d/%d/%d %d/%d/%d %d/%d/%d\n", &vIndex[0],&vtIndex[0],&vnIndex[0],
+														 &vIndex[1],&vtIndex[1],&vnIndex[1],
+														 &vIndex[2],&vtIndex[2],&vnIndex[2]);
+
+			}
+		}
+	}
+
+}

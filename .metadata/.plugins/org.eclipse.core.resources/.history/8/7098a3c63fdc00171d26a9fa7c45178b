@@ -1,0 +1,47 @@
+#include <GL/glut.h>
+#include "mesh.h"
+#include "toyparser.h"
+
+
+void ler(IndexedTriangleMesh &myMesh){
+	ToyParser parser;
+
+	parser.parse("models/macaco.obj",myMesh,ToyParser::MODEL_NO_TEXTURE);
+
+
+
+
+}
+void desenhe(){
+	IndexedTriangleMesh myMesh;
+	static bool parsed =false;
+	if(false){
+		ler(myMesh);
+		parsed = true;
+	}
+	myMesh.addVertex(0,1,0);
+	myMesh.addVertex(1,0,0);
+	myMesh.addVertex(-1,0,0);
+
+	myMesh.draw();
+	glutSwapBuffers();
+	glutPostRedisplay();
+}
+int main( int argc, char** argv )
+{
+	glutInit( &argc, argv );
+	glutInitWindowSize(600,600);
+	glutInitWindowPosition(10,10);
+	glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH | GLUT_STENCIL );
+
+	glutCreateWindow( "Cena" );
+	glutDisplayFunc( desenhe );
+	//glutKeyboardFunc( trataTeclado );
+	//glutMouseFunc( trataMouseClick );
+	//glutMotionFunc( trataMouseMove );
+	glutMainLoop();
+
+
+
+	return 0;
+}

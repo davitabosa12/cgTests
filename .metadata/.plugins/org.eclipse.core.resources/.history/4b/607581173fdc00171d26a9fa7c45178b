@@ -1,0 +1,36 @@
+#include <GL/glut.h>
+#include "mesh.h"
+#include "toyparser.h"
+
+
+void ler(){
+	ToyParser parser;
+	IndexedTriangleMesh myMesh;
+	parser.parse("models/macaco.obj",myMesh,ToyParser::MODEL_NO_TEXTURE);
+	myMesh.draw();
+
+
+
+}
+void desenhe(){
+	glutSwapBuffers();
+	glutPostRedisplay();
+}
+int main( int argc, char** argv )
+{
+	glutInit( &argc, argv );
+	glutInitWindowSize(600,600);
+	glutInitWindowPosition(10,10);
+	glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH | GLUT_STENCIL );
+
+	glutCreateWindow( "Cena" );
+	glutDisplayFunc( desenhe );
+	//glutKeyboardFunc( trataTeclado );
+	//glutMouseFunc( trataMouseClick );
+	//glutMotionFunc( trataMouseMove );
+	glutMainLoop();
+
+
+
+	return 0;
+}

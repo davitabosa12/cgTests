@@ -1,0 +1,29 @@
+/*
+ * ToyParser.cpp
+ *
+ *  Created on: 7 de dez de 2017
+ *      Author: davi
+ */
+
+#include <toyparser.h>
+#include <GL/gl.h>
+
+ToyParser::ToyParser() {
+	// TODO Auto-generated constructor stub
+
+}
+
+ToyParser::~ToyParser() {
+	// TODO Auto-generated destructor stub
+}
+
+IndexedTriangleMesh ToyParser::parse(std::string objPath){
+
+	std::vector< unsigned int > vertexIndices, uvIndices, normalIndices;
+	std::vector< Vertex > temp_vertices;
+	std::vector< Vertex > temp_uvs;
+	std::vector< Vertex > temp_normals;
+
+	FILE *f = fopen(objPath.c_str(),"r");
+
+}

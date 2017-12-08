@@ -1,0 +1,19 @@
+#include <GL/glut.h>
+
+int main( int argc, char** argv )
+{
+	glutInit( &argc, argv );
+	glutInitWindowSize( img.getWidth()*PIXEL_SIZE, img.getHeight()*PIXEL_SIZE );
+	glutInitWindowPosition(10,10);
+	glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH | GLUT_STENCIL );
+
+	glutCreateWindow( "Editor de Imagens 2D - Pressione 'A' para Ajuda" );
+	glutDisplayFunc( meuPintaCena );
+	glutKeyboardFunc( trataTeclado );
+	glutMouseFunc( trataMouseClick );
+	glutMotionFunc( trataMouseMove );
+
+
+
+	return 0;
+}
