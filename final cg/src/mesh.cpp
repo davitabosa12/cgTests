@@ -9,6 +9,7 @@ TriangleMesh::TriangleMesh()
 		edgeColor(0,0,1),
 		vertexColor(1,0,0),
 		drawModes( TriangleMesh::DRAW_TRIANGLES ),
+		normals(),
 		vertices()
 {
 }

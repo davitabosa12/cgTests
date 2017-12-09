@@ -26,25 +26,6 @@ void ToyParser::parse(std::string objPath, IndexedTriangleMesh &myMesh, ModelTyp
 	std::vector< Vertex > temp_vertices;
 	std::vector< Vertex > temp_textures;
 	std::vector< Vertex > temp_normals;
-#if 0
-
-
-	FILE *f = fopen(objPath.c_str(),"r");
-	if(f == NULL){
-		std::cout << "Nao foi possivel abrir o modelo." << std::endl;
-		return;
-	}
-	while(1){
-		char lineHeader[128];
-
-		int res = fscanf(f,"%s",lineHeader);
-		if (res == EOF)
-			break;
-		else{
-
-		}
-	}
-#else
 	std::string line;
 	std::ifstream myfile (objPath);
 	char tipo[128];
@@ -67,7 +48,7 @@ void ToyParser::parse(std::string objPath, IndexedTriangleMesh &myMesh, ModelTyp
 							Vertex vn;
 							sscanf(line.c_str(),"%*s %f %f %f\n", &vn.x, &vn.y, &vn.z);
 							myMesh.addNormal(vn.x, vn.y, vn.z);
-							std::cout << "Vertex: x = " << vn.x << " y = " << vn.y << " z = " << vn.z  << std::endl;
+							//std::cout << "Vertex: x = " << vn.x << " y = " << vn.y << " z = " << vn.z  << std::endl;
 							temp_normals.push_back(vn);
 						}
 						else if(strcmp(tipo, "f") == 0){ //indice de face
@@ -76,9 +57,9 @@ void ToyParser::parse(std::string objPath, IndexedTriangleMesh &myMesh, ModelTyp
 							sscanf(line.c_str(),"%*s %d%*c%*c%d %d%*c%*c%d %d%*c%*c%d\n", &vIndex[0],&vnIndex[0],
 																	 	 	 	&vIndex[1],&vnIndex[1],
 																				&vIndex[2],&vnIndex[2]);
-							myMesh.addTriangle(vIndex[0],vnIndex[0],
-											   vIndex[1],vnIndex[1],
-											   vIndex[2],vnIndex[2]);
+							myMesh.addTriangle(vIndex[0] -1,vnIndex[0]-1,
+											   vIndex[1]-1,vnIndex[1]-1,
+											   vIndex[2]-1,vnIndex[2]-1);
 							/*std::cout << "vIndex: " << vIndex[0] << " "<< vIndex[1] << " "<< vIndex[2] << " "
 									<<  " vnIndex: " << vnIndex[0] << " "<< vnIndex[1] << " "<< vnIndex[2] << " "
 									<<std::endl;*/
@@ -97,6 +78,5 @@ void ToyParser::parse(std::string objPath, IndexedTriangleMesh &myMesh, ModelTyp
 	else
 		std::cout << "Nao consegui abrir" << std::endl;
 	return;
-#endif
 
 }
