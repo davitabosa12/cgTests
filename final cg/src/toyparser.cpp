@@ -57,6 +57,10 @@ void ToyParser::parse(std::string objPath, IndexedTriangleMesh &myMesh, ModelTyp
 							sscanf(line.c_str(),"%*s %d%*c%*c%d %d%*c%*c%d %d%*c%*c%d\n", &vIndex[0],&vnIndex[0],
 																	 	 	 	&vIndex[1],&vnIndex[1],
 																				&vIndex[2],&vnIndex[2]);
+							else if(modelType == MODEL_COMPLETE) //ignora coord textura
+								sscanf(line.c_str(),"%*s %d%*c%*d%*c%d %d%*c%*d%*c%d %d%*c%*d%*c%d\n", &vIndex[0],&vnIndex[0],
+																							  &vIndex[1],&vnIndex[1],
+																							  &vIndex[2],&vnIndex[2]);
 							myMesh.addTriangle(vIndex[0] -1,vnIndex[0]-1,
 											   vIndex[1]-1,vnIndex[1]-1,
 											   vIndex[2]-1,vnIndex[2]-1);

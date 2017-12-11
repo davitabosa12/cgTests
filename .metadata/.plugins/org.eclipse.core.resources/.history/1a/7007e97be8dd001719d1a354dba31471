@@ -1,0 +1,22 @@
+/*
+ * texture.h
+ *
+ *  Created on: 10 de dez de 2017
+ *      Author: davi
+ */
+
+#ifndef TEXTURE_H_
+#define TEXTURE_H_
+
+class Texture {
+public:
+	Texture();
+	~Texture();
+	bind();
+
+private:
+	GLuint image;
+	GLuint textureId;
+};
+
+#endif /* TEXTURE_H_ */

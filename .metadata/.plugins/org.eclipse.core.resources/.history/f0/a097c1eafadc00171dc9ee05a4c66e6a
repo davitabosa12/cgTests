@@ -1,0 +1,17 @@
+/*
+ * camera.h
+ *
+ *  Created on: 9 de dez de 2017
+ *      Author: davi
+ */
+
+#ifndef CAMERA_H_
+#define CAMERA_H_
+
+class Camera {
+public:
+	Camera();
+	~Camera();
+};
+
+#endif /* CAMERA_H_ */

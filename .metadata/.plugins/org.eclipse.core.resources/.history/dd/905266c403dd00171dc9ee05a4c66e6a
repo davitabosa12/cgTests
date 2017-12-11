@@ -1,0 +1,31 @@
+/*
+ * camera.h
+ *
+ *  Created on: 9 de dez de 2017
+ *      Author: davi
+ */
+
+#ifndef CAMERA_H_
+#define CAMERA_H_
+
+#include "Vector/vec3.h"
+class Camera {
+public:
+	Camera();
+	~Camera();
+	void move();
+
+	bool goingForward;
+	bool goingBackward;
+	bool goingLeft;
+	bool goingRight;
+	void resetStates();
+
+protected:
+	Vec3 position;
+	Vec3 rotation;
+
+
+};
+
+#endif /* CAMERA_H_ */

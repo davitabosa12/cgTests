@@ -1,0 +1,26 @@
+/*
+ * texture.cpp
+ *
+ *  Created on: 10 de dez de 2017
+ *      Author: davi
+ */
+
+#include "texture.h"
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_img.h"
+Texture::Texture(const std::string& path) {
+	int width, height,numComponents;
+	char* imageData = (char*)stbi_load(path.c_str(), &width, &height, &numComponents, (int)4);
+	glGenTextures(1, &textureId);
+	glBindTexture(GL_TEXTURE_2D, textureId);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+	stbi_image_free(imageData);
+
+}
+
+Texture::~Texture() {
+	// TODO Auto-generated destructor stub
+}
+

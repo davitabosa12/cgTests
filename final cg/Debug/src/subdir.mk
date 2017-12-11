@@ -9,6 +9,7 @@ CPP_SRCS += \
 ../src/indexedmesh.cpp \
 ../src/mesh.cpp \
 ../src/rawmesh.cpp \
+../src/texture.cpp \
 ../src/toyparser.cpp 
 
 OBJS += \
@@ -17,6 +18,7 @@ OBJS += \
 ./src/indexedmesh.o \
 ./src/mesh.o \
 ./src/rawmesh.o \
+./src/texture.o \
 ./src/toyparser.o 
 
 CPP_DEPS += \
@@ -25,6 +27,7 @@ CPP_DEPS += \
 ./src/indexedmesh.d \
 ./src/mesh.d \
 ./src/rawmesh.d \
+./src/texture.d \
 ./src/toyparser.d 
 
 

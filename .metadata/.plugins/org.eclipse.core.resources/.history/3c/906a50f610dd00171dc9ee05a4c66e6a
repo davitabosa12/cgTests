@@ -1,0 +1,80 @@
+/*
+ * camera.cpp
+ *
+ *  Created on: 9 de dez de 2017
+ *      Author: davi
+ */
+
+#include "camera.h"
+#include <iostream>
+
+Camera::Camera() {
+	// TODO Auto-generated constructor stub
+	goingLeft = false;
+	goingRight = false;
+	goingForward = false;
+	goingBackward = false;
+
+	position = Vec3::VEC3_ZERO;
+	viewDirection = Vec3(0,0,-1);
+	oldMousePos = Vec3::VEC3_ZERO;
+}
+
+Camera::~Camera() {
+	// TODO Auto-generated destructor stub
+}
+
+const Vec3& Camera::getPosition() const {
+	return position;
+}
+
+const Vec3& Camera::getViewDirection() const {
+	return viewDirection;
+}
+
+void Camera::setViewDirection(const Vec3& obj) {
+	this->viewDirection = obj;
+}
+
+void Camera::setPosition(const Vec3& position) {
+	this->position = position;
+}
+
+void Camera::resetStates(){
+	goingLeft = false;
+	goingRight = false;
+	goingForward = false;
+	goingBackward = false;
+}
+
+void Camera::move(){
+	if(goingLeft){
+		position = position + (Vec3::VEC3_LEFT * 0.1);
+	}
+	if(goingRight){
+		position = position + (Vec3::VEC3_RIGHT * 0.1);
+	}
+	if(goingForward){
+		position = position + (Vec3::VEC3_FORWARD * 0.1);
+	}
+	if(goingBackward){
+		position = position + (Vec3::VEC3_BACKWARD * 0.1);
+	}
+}
+ void Camera::mouseMove(int x, int y){
+	 Vec2 newMousePos = Vec2(x,y);
+
+	 Vec2 delta = Vec2(newMousePos.getX() - oldMousePos.getX(),
+			 	 	   newMousePos.getY() - oldMousePos.getY());
+
+	 std::cout << "Delta x: " << delta.getX() << " Delta y: " << delta.getY() << std::endl;
+
+	 viewDirection.setX(delta.getX());
+	 viewDirection.setY(delta.getY());
+
+
+
+	 oldMousePos = newMousePos;
+
+
+ }

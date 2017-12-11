@@ -1,145 +1,138 @@
-14:43:43 **** Incremental Build of configuration Debug for project final cg ****
+13:03:02 **** Incremental Build of configuration Debug for project final cg ****
 make all 
 Building file: ../src/demo.cpp
 Invoking: GCC C++ Compiler
 g++ -std=c++0x -I"/home/davi/Documentos/UFC/CG/cgTests/final cg/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/demo.d" -MT"src/demo.o" -o "src/demo.o" "../src/demo.cpp"
+../src/demo.cpp: In function ‘void myPassiveMotionFunc(int, int)’:
+../src/demo.cpp:43:8: warning: unused variable ‘posx’ [-Wunused-variable]
+  float posx = remap(x,0.0f,600.0f, -2.0f, 2.0f);
+        ^
+../src/demo.cpp:44:8: warning: unused variable ‘posy’ [-Wunused-variable]
+  float posy = remap(y,0.0f,600.0f, 2.0f, -2.0f);
+        ^
 Finished building: ../src/demo.cpp
+ 
+Building file: ../src/texture.cpp
+Invoking: GCC C++ Compiler
+g++ -std=c++0x -I"/home/davi/Documentos/UFC/CG/cgTests/final cg/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/texture.d" -MT"src/texture.o" -o "src/texture.o" "../src/texture.cpp"
+Finished building: ../src/texture.cpp
  
 Building target: final cg
 Invoking: GCC C++ Linker
-g++  -o "final cg"  ./src/demo.o ./src/indexedmesh.o ./src/mesh.o ./src/rawmesh.o ./src/toyparser.o   -lGL -lGLU -lglut
+g++  -o "final cg"  ./src/camera.o ./src/demo.o ./src/indexedmesh.o ./src/mesh.o ./src/rawmesh.o ./src/texture.o ./src/toyparser.o  ./include/glm/detail/glm.o   -lGL -lGLU -lglut -lSOIL
 Finished building target: final cg
  
-14:43:48 **** Incremental Build of configuration Debug for project final cg ****
+13:03:08 **** Incremental Build of configuration Debug for project final cg ****
 make all 
 make: Nothing to be done for 'all'.
-14:47:14 **** Incremental Build of configuration Debug for project final cg ****
+13:16:49 **** Incremental Build of configuration Debug for project final cg ****
 make all 
 Building file: ../src/demo.cpp
 Invoking: GCC C++ Compiler
 g++ -std=c++0x -I"/home/davi/Documentos/UFC/CG/cgTests/final cg/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/demo.d" -MT"src/demo.o" -o "src/demo.o" "../src/demo.cpp"
-Finished building: ../src/demo.cpp
- 
-Building target: final cg
-Invoking: GCC C++ Linker
-g++  -o "final cg"  ./src/demo.o ./src/indexedmesh.o ./src/mesh.o ./src/rawmesh.o ./src/toyparser.o   -lGL -lGLU -lglut
-Finished building target: final cg
- 
-14:47:17 **** Incremental Build of configuration Debug for project final cg ****
-make all 
-make: Nothing to be done for 'all'.
-14:48:33 **** Incremental Build of configuration Debug for project final cg ****
-make all 
-Building file: ../src/demo.cpp
-Invoking: GCC C++ Compiler
-g++ -std=c++0x -I"/home/davi/Documentos/UFC/CG/cgTests/final cg/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/demo.d" -MT"src/demo.o" -o "src/demo.o" "../src/demo.cpp"
-Finished building: ../src/demo.cpp
- 
-Building target: final cg
-Invoking: GCC C++ Linker
-g++  -o "final cg"  ./src/demo.o ./src/indexedmesh.o ./src/mesh.o ./src/rawmesh.o ./src/toyparser.o   -lGL -lGLU -lglut
-Finished building target: final cg
- 
-14:50:01 **** Incremental Build of configuration Debug for project final cg ****
+../src/demo.cpp: In function ‘void myPassiveMotionFunc(int, int)’:
+../src/demo.cpp:43:8: warning: unused variable ‘posx’ [-Wunused-variable]
+  float posx = remap(x,0.0f,600.0f, -2.0f, 2.0f);
+        ^
+../src/demo.cpp:44:8: warning: unused variable ‘posy’ [-Wunused-variable]
+  float posy = remap(y,0.0f,600.0f, 2.0f, -2.0f);
+        ^
+../src/demo.cpp: In function ‘void drawSkybox(float)’:
+../src/demo.cpp:61:2: error: ‘skybox’ was not declared in this scope
+  skybox.bind(0);
+  ^
+make: *** [src/demo.o] Error 1
+src/subdir.mk:36: recipe for target 'src/demo.o' failed
+13:17:27 **** Incremental Build of configuration Debug for project final cg ****
 make all 
 Building file: ../src/demo.cpp
 Invoking: GCC C++ Compiler
 g++ -std=c++0x -I"/home/davi/Documentos/UFC/CG/cgTests/final cg/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/demo.d" -MT"src/demo.o" -o "src/demo.o" "../src/demo.cpp"
+../src/demo.cpp: In function ‘void myPassiveMotionFunc(int, int)’:
+../src/demo.cpp:43:8: warning: unused variable ‘posx’ [-Wunused-variable]
+  float posx = remap(x,0.0f,600.0f, -2.0f, 2.0f);
+        ^
+../src/demo.cpp:44:8: warning: unused variable ‘posy’ [-Wunused-variable]
+  float posy = remap(y,0.0f,600.0f, 2.0f, -2.0f);
+        ^
 Finished building: ../src/demo.cpp
  
 Building target: final cg
 Invoking: GCC C++ Linker
-g++  -o "final cg"  ./src/demo.o ./src/indexedmesh.o ./src/mesh.o ./src/rawmesh.o ./src/toyparser.o   -lGL -lGLU -lglut
+g++  -o "final cg"  ./src/camera.o ./src/demo.o ./src/indexedmesh.o ./src/mesh.o ./src/rawmesh.o ./src/texture.o ./src/toyparser.o  ./include/glm/detail/glm.o   -lGL -lGLU -lglut -lSOIL
 Finished building target: final cg
  
-14:50:51 **** Incremental Build of configuration Debug for project final cg ****
+13:17:59 **** Incremental Build of configuration Debug for project final cg ****
 make all 
 Building file: ../src/demo.cpp
 Invoking: GCC C++ Compiler
 g++ -std=c++0x -I"/home/davi/Documentos/UFC/CG/cgTests/final cg/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/demo.d" -MT"src/demo.o" -o "src/demo.o" "../src/demo.cpp"
+../src/demo.cpp: In function ‘void myPassiveMotionFunc(int, int)’:
+../src/demo.cpp:43:8: warning: unused variable ‘posx’ [-Wunused-variable]
+  float posx = remap(x,0.0f,600.0f, -2.0f, 2.0f);
+        ^
+../src/demo.cpp:44:8: warning: unused variable ‘posy’ [-Wunused-variable]
+  float posy = remap(y,0.0f,600.0f, 2.0f, -2.0f);
+        ^
 Finished building: ../src/demo.cpp
  
 Building target: final cg
 Invoking: GCC C++ Linker
-g++  -o "final cg"  ./src/demo.o ./src/indexedmesh.o ./src/mesh.o ./src/rawmesh.o ./src/toyparser.o   -lGL -lGLU -lglut
+g++  -o "final cg"  ./src/camera.o ./src/demo.o ./src/indexedmesh.o ./src/mesh.o ./src/rawmesh.o ./src/texture.o ./src/toyparser.o  ./include/glm/detail/glm.o   -lGL -lGLU -lglut -lSOIL
 Finished building target: final cg
  
-14:51:46 **** Incremental Build of configuration Debug for project final cg ****
-make all 
-Building file: ../src/toyparser.cpp
-Invoking: GCC C++ Compiler
-g++ -std=c++0x -I"/home/davi/Documentos/UFC/CG/cgTests/final cg/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/toyparser.d" -MT"src/toyparser.o" -o "src/toyparser.o" "../src/toyparser.cpp"
-../src/toyparser.cpp: In member function ‘void ToyParser::parse(std::string, IndexedTriangleMesh&, ToyParser::ModelType)’:
-../src/toyparser.cpp:72:32: warning: unused variable ‘vtIndex’ [-Wunused-variable]
-        unsigned int vIndex[3], vtIndex[3], vnIndex[3];
-                                ^
-Finished building: ../src/toyparser.cpp
- 
-Building target: final cg
-Invoking: GCC C++ Linker
-g++  -o "final cg"  ./src/demo.o ./src/indexedmesh.o ./src/mesh.o ./src/rawmesh.o ./src/toyparser.o   -lGL -lGLU -lglut
-Finished building target: final cg
- 
-14:53:29 **** Incremental Build of configuration Debug for project final cg ****
+13:19:13 **** Incremental Build of configuration Debug for project final cg ****
 make all 
 Building file: ../src/demo.cpp
 Invoking: GCC C++ Compiler
 g++ -std=c++0x -I"/home/davi/Documentos/UFC/CG/cgTests/final cg/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/demo.d" -MT"src/demo.o" -o "src/demo.o" "../src/demo.cpp"
+../src/demo.cpp: In function ‘void myPassiveMotionFunc(int, int)’:
+../src/demo.cpp:43:8: warning: unused variable ‘posx’ [-Wunused-variable]
+  float posx = remap(x,0.0f,600.0f, -2.0f, 2.0f);
+        ^
+../src/demo.cpp:44:8: warning: unused variable ‘posy’ [-Wunused-variable]
+  float posy = remap(y,0.0f,600.0f, 2.0f, -2.0f);
+        ^
 Finished building: ../src/demo.cpp
+ 
+Building file: ../src/texture.cpp
+Invoking: GCC C++ Compiler
+g++ -std=c++0x -I"/home/davi/Documentos/UFC/CG/cgTests/final cg/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/texture.d" -MT"src/texture.o" -o "src/texture.o" "../src/texture.cpp"
+Finished building: ../src/texture.cpp
  
 Building target: final cg
 Invoking: GCC C++ Linker
-g++  -o "final cg"  ./src/demo.o ./src/indexedmesh.o ./src/mesh.o ./src/rawmesh.o ./src/toyparser.o   -lGL -lGLU -lglut
+g++  -o "final cg"  ./src/camera.o ./src/demo.o ./src/indexedmesh.o ./src/mesh.o ./src/rawmesh.o ./src/texture.o ./src/toyparser.o  ./include/glm/detail/glm.o   -lGL -lGLU -lglut -lSOIL
 Finished building target: final cg
  
-14:54:14 **** Incremental Build of configuration Debug for project final cg ****
+13:20:08 **** Incremental Build of configuration Debug for project final cg ****
+make all 
+Building file: ../src/texture.cpp
+Invoking: GCC C++ Compiler
+g++ -std=c++0x -I"/home/davi/Documentos/UFC/CG/cgTests/final cg/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/texture.d" -MT"src/texture.o" -o "src/texture.o" "../src/texture.cpp"
+Finished building: ../src/texture.cpp
+ 
+Building target: final cg
+Invoking: GCC C++ Linker
+g++  -o "final cg"  ./src/camera.o ./src/demo.o ./src/indexedmesh.o ./src/mesh.o ./src/rawmesh.o ./src/texture.o ./src/toyparser.o  ./include/glm/detail/glm.o   -lGL -lGLU -lglut -lSOIL
+Finished building target: final cg
+ 
+13:23:03 **** Incremental Build of configuration Debug for project final cg ****
 make all 
 Building file: ../src/demo.cpp
 Invoking: GCC C++ Compiler
 g++ -std=c++0x -I"/home/davi/Documentos/UFC/CG/cgTests/final cg/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/demo.d" -MT"src/demo.o" -o "src/demo.o" "../src/demo.cpp"
+../src/demo.cpp: In function ‘void myPassiveMotionFunc(int, int)’:
+../src/demo.cpp:43:8: warning: unused variable ‘posx’ [-Wunused-variable]
+  float posx = remap(x,0.0f,600.0f, -2.0f, 2.0f);
+        ^
+../src/demo.cpp:44:8: warning: unused variable ‘posy’ [-Wunused-variable]
+  float posy = remap(y,0.0f,600.0f, 2.0f, -2.0f);
+        ^
 Finished building: ../src/demo.cpp
  
 Building target: final cg
 Invoking: GCC C++ Linker
-g++  -o "final cg"  ./src/demo.o ./src/indexedmesh.o ./src/mesh.o ./src/rawmesh.o ./src/toyparser.o   -lGL -lGLU -lglut
-Finished building target: final cg
- 
-14:55:19 **** Incremental Build of configuration Debug for project final cg ****
-make all 
-Building file: ../src/demo.cpp
-Invoking: GCC C++ Compiler
-g++ -std=c++0x -I"/home/davi/Documentos/UFC/CG/cgTests/final cg/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/demo.d" -MT"src/demo.o" -o "src/demo.o" "../src/demo.cpp"
-Finished building: ../src/demo.cpp
- 
-Building target: final cg
-Invoking: GCC C++ Linker
-g++  -o "final cg"  ./src/demo.o ./src/indexedmesh.o ./src/mesh.o ./src/rawmesh.o ./src/toyparser.o   -lGL -lGLU -lglut
-Finished building target: final cg
- 
-14:55:31 **** Incremental Build of configuration Debug for project final cg ****
-make all 
-Building file: ../src/demo.cpp
-Invoking: GCC C++ Compiler
-g++ -std=c++0x -I"/home/davi/Documentos/UFC/CG/cgTests/final cg/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/demo.d" -MT"src/demo.o" -o "src/demo.o" "../src/demo.cpp"
-Finished building: ../src/demo.cpp
- 
-Building target: final cg
-Invoking: GCC C++ Linker
-g++  -o "final cg"  ./src/demo.o ./src/indexedmesh.o ./src/mesh.o ./src/rawmesh.o ./src/toyparser.o   -lGL -lGLU -lglut
-Finished building target: final cg
- 
-14:55:55 **** Incremental Build of configuration Debug for project final cg ****
-make all 
-make: Nothing to be done for 'all'.
-14:57:57 **** Incremental Build of configuration Debug for project final cg ****
-make all 
-Building file: ../src/demo.cpp
-Invoking: GCC C++ Compiler
-g++ -std=c++0x -I"/home/davi/Documentos/UFC/CG/cgTests/final cg/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/demo.d" -MT"src/demo.o" -o "src/demo.o" "../src/demo.cpp"
-Finished building: ../src/demo.cpp
- 
-Building target: final cg
-Invoking: GCC C++ Linker
-g++  -o "final cg"  ./src/demo.o ./src/indexedmesh.o ./src/mesh.o ./src/rawmesh.o ./src/toyparser.o   -lGL -lGLU -lglut
+g++  -o "final cg"  ./src/camera.o ./src/demo.o ./src/indexedmesh.o ./src/mesh.o ./src/rawmesh.o ./src/texture.o ./src/toyparser.o  ./include/glm/detail/glm.o   -lGL -lGLU -lglut -lSOIL
 Finished building target: final cg
  

@@ -9,6 +9,7 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include src/subdir.mk
+-include models/coffee-pot/source/ad4abb8467314f59a50ebdd985d222f6/subdir.mk
 -include models/subdir.mk
 -include include/glm/detail/subdir.mk
 -include bin/subdir.mk

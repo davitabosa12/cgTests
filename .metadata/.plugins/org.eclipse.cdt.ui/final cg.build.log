@@ -1,15 +1,22 @@
-14:57:57 **** Incremental Build of configuration Debug for project final cg ****
+13:23:03 **** Incremental Build of configuration Debug for project final cg ****
 make all 
 Building file: ../src/demo.cpp
 Invoking: GCC C++ Compiler
 g++ -std=c++0x -I"/home/davi/Documentos/UFC/CG/cgTests/final cg/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/demo.d" -MT"src/demo.o" -o "src/demo.o" "../src/demo.cpp"
+../src/demo.cpp: In function ‘void myPassiveMotionFunc(int, int)’:
+../src/demo.cpp:43:8: warning: unused variable ‘posx’ [-Wunused-variable]
+  float posx = remap(x,0.0f,600.0f, -2.0f, 2.0f);
+        ^
+../src/demo.cpp:44:8: warning: unused variable ‘posy’ [-Wunused-variable]
+  float posy = remap(y,0.0f,600.0f, 2.0f, -2.0f);
+        ^
 Finished building: ../src/demo.cpp
  
 Building target: final cg
 Invoking: GCC C++ Linker
-g++  -o "final cg"  ./src/demo.o ./src/indexedmesh.o ./src/mesh.o ./src/rawmesh.o ./src/toyparser.o   -lGL -lGLU -lglut
+g++  -o "final cg"  ./src/camera.o ./src/demo.o ./src/indexedmesh.o ./src/mesh.o ./src/rawmesh.o ./src/texture.o ./src/toyparser.o  ./include/glm/detail/glm.o   -lGL -lGLU -lglut -lSOIL
 Finished building target: final cg
  
 
-14:57:58 Build Finished (took 1s.327ms)
+13:23:04 Build Finished (took 1s.217ms)
 

@@ -1,0 +1,19 @@
+/*
+ * texture.cpp
+ *
+ *  Created on: 10 de dez de 2017
+ *      Author: davi
+ */
+
+#include "texture.h"
+
+#include "stb_img.h"
+Texture::Texture(const std::string& path) {
+	// TODO Auto-generated constructor stub
+
+}
+
+Texture::~Texture() {
+	// TODO Auto-generated destructor stub
+}
+

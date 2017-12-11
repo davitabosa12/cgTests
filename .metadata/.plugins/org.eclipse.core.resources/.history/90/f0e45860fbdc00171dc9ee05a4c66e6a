@@ -1,0 +1,22 @@
+/*
+ * camera.h
+ *
+ *  Created on: 9 de dez de 2017
+ *      Author: davi
+ */
+
+#ifndef CAMERA_H_
+#define CAMERA_H_
+
+#include "Vector/vec3.h"
+class Camera {
+public:
+	Camera();
+	~Camera();
+protected:
+	float eye[3];
+	float obj[3];
+	float up[3];
+};
+
+#endif /* CAMERA_H_ */

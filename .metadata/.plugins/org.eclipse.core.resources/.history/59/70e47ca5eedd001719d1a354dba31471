@@ -1,0 +1,23 @@
+/*
+ * texture.cpp
+ *
+ *  Created on: 10 de dez de 2017
+ *      Author: davi
+ */
+
+#include "texture.h"
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_img.h"
+Texture::Texture(const std::string& path) {
+	unsigned int width, height, numComponents;
+	stbi_load();
+
+
+	stbi_image_free();
+
+}
+
+Texture::~Texture() {
+	// TODO Auto-generated destructor stub
+}
+

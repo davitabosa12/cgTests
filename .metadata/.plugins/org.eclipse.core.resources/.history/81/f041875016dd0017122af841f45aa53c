@@ -1,0 +1,69 @@
+#ifndef VEC3_H
+#define VEC3_H
+
+#include<cmath>
+#include<iostream>
+#include<string>
+#include<sstream>
+class glm::Vec3
+{
+	//Constantes
+    public:
+        static const glm::Vec3 VEC3_ZERO;        ///Atalho para Vec3(0,0,0)
+        static const glm::Vec3 VEC3_ONES;        ///Atalho para Vec3(1,1,1)
+        static const glm::Vec3 VEC3_FORWARD;     ///Atalho para Vec3(0,0,1)
+        static const glm::Vec3 VEC3_BACKWARD;    ///Atalho para Vec3(0,0,-1)
+        static const glm::Vec3 VEC3_UP;          ///Atalho para Vec3(0,1,0)
+        static const glm::Vec3 VEC3_DOWN;        ///Atalho para Vec3(0,-1,0)
+        static const glm::Vec3 VEC3_LEFT;        ///Atalho para Vec3(-1,0,0)
+        static const glm::Vec3 VEC3_RIGHT;       ///Atalho para Vec3(1,0,0)
+    //Campos
+    private:
+        double x; ///Componente X
+        double y; ///Componente Y
+        double z; ///Componente Z
+        double mag;
+    public:
+        glm::Vec3();
+        glm::Vec3(double x, double y, double z); //Cria um vetor dado x, y e z.
+        glm::Vec3(const glm::Vec3& v); //Copy constructor
+
+        //Metodos
+        glm::Vec3 add(glm::Vec3 v); //soma de vetores
+        glm::Vec3 subtr(glm::Vec3 v); //subtracao de vetores
+        double dot(glm::Vec3 v); //produto escalar
+        glm::Vec3 cross(glm::Vec3 v); //produto vetorial
+        glm::Vec3 mult(double s); //multiplicacao de um vetor por um escalar
+        glm::Vec3 div(double s); //divisao de um vetor por um escalar
+        double magnitude(); //Magnitude do vetor
+        glm::Vec3 normalized();  //Retorna o vetor normalizado
+        glm::Vec3 projection(glm::Vec3 v); //Retorna a projecao deste vetor em V
+        static double angleBetween(glm::Vec3 v1, glm::Vec3 v2); //Retorna o angulo entre v1 e v2
+        static double bigAngleBetween(glm::Vec3 v1, glm::Vec3 v2); //Retorna o maior angulo entre v1 e v2
+        //IO
+        std::string to_string();
+
+        //Sobrecarga de operadores
+        glm::Vec3 operator+(glm::Vec3 a);
+        glm::Vec3 operator-(glm::Vec3 a);
+        glm::Vec3 operator-();
+        glm::Vec3 operator*(const double s) const;
+        glm::Vec3 operator/(double s);
+        bool operator==(glm::Vec3 a);
+        void operator=(glm::Vec3 a);
+
+
+
+        //Getters & Setters
+        double getX() const;
+        void setX(double x);
+        double getY() const;
+        void setY(double y);
+        double getZ() const;
+        void setZ(double z);
+        double getMagnitude() const;
+
+        virtual ~glm::Vec3(); ///Destrutor
+};
+
+#endif // VEC3_H

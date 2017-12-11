@@ -1,0 +1,2 @@
+include/soil/original/stb_image-1.09.o: \
+ ../include/soil/original/stb_image-1.09.c

@@ -1,0 +1,193 @@
+#include"vec3.h"
+#include <Vector/glmvec3.h>
+#include <Vector/glmvec3.h>
+
+const glm::Vec3 glm::Vec3::VEC3_ZERO = glm::Vec3(0,0,0); //Vetor zero
+const glm::Vec3 glm::Vec3::VEC3_ONES = glm::Vec3(1,1,1); //Vetor de "um"s
+const glm::Vec3 glm::Vec3::VEC3_FORWARD = glm::Vec3(0,0,1);
+const glm::Vec3 glm::Vec3::VEC3_BACKWARD = glm::Vec3(0,0,-1);
+const glm::Vec3 glm::Vec3::VEC3_UP = glm::Vec3(0,1,0);
+const glm::Vec3 glm::Vec3::VEC3_DOWN = glm::Vec3(0,-1,0);
+const glm::Vec3 glm::Vec3::VEC3_LEFT = glm::Vec3(-1,0,0);
+const glm::Vec3 glm::Vec3::VEC3_RIGHT = glm::Vec3(1,0,0);
+
+/**
+  *Construtor padrao Vec3
+  *Cria um novo vetor FORWARD
+  */
+glm::Vec3::glm::Vec3()
+{
+    this->x = 0;
+	this->y = 0;
+	this->z = 1;
+	this->mag = sqrt(x*x + y*y + z*z);
+}
+
+glm::Vec3::glm::Vec3(double x, double y, double z) {
+	this->x = x;
+	this->y = y;
+	this->z = z;
+	double temp = sqrt(x*x + y*y + z*z);
+	this->mag = temp;
+
+}
+//Copy constructor
+glm::Vec3::glm::Vec3(const glm::Vec3& v) {
+	this->x = v.getX();
+	this->y = v.getY();
+	this->z = v.getZ();
+	this->mag = sqrt(x*x + y*y + z*z);
+}
+
+glm::Vec3::~glm::Vec3()
+{
+    //wat
+}
+glm::Vec3 glm::Vec3::add(glm::Vec3 v) {
+	return glm::Vec3(this->x + v.getX(),
+				this->y + v.getY(),
+				this->z + v.getZ());
+}
+
+glm::Vec3 glm::Vec3::subtr(glm::Vec3 v) {
+	return glm::Vec3(x - v.getX(), y - v.getY(), z - v.getZ());
+}
+glm::Vec3 glm::Vec3::mult(double s) {
+	return glm::Vec3(s * x, s * y, s * z);
+}
+
+glm::Vec3 glm::Vec3::div(double s) {
+	return glm::Vec3(x / s, y / s, z / s);
+}
+
+double glm::Vec3::dot(glm::Vec3 v) {
+	return this->x * v.getX() +
+		   this->y * v.getY() +
+		   this->z * v.getZ();
+}
+
+glm::Vec3 glm::Vec3::cross(glm::Vec3 v) {
+	double vx = v.getX(), vy = v.getY(), vz = v.getZ();
+	return glm::Vec3(y * vz - z * vy,
+				z * vx - x * vz,
+				x * vy - y * vx);
+}
+
+double glm::Vec3::magnitude() {
+	return sqrt(x*x + y*y + z*z);
+}
+
+glm::Vec3 glm::Vec3::normalized() {
+	double norma = this->magnitude();
+	return glm::Vec3(x/norma, y/norma, z/norma);
+}
+
+ //Retorna o angulo entre v1 e v2
+double glm::Vec3::angleBetween(glm::Vec3 v1, glm::Vec3 v2){
+    glm::Vec3 n1 = v1.normalized();
+    glm::Vec3 n2 = v2.normalized();
+    double n_mult = v1.getMagnitude() * v2.getMagnitude();
+    double theta,sen;
+    double cos = n1.dot(n2);
+    glm::Vec3 v = n1.cross(n2);
+
+    if(v.getX() != 0 )
+        sen = v.getX();
+    else if(v.getY() != 0)
+        sen = v.getY();
+    else
+        sen = v.getZ();
+
+
+    if(cos == 0)
+        return asin(sen);
+
+    return atan(sen/cos);
+}
+double glm::Vec3::bigAngleBetween(glm::Vec3 v1, glm::Vec3 v2){
+    return 2 * M_PI - angleBetween(v1,v2);
+}
+
+
+double glm::Vec3::getX() const {
+	return x;
+}
+
+void glm::Vec3::setX(double x) {
+	this->x = x;
+}
+
+double glm::Vec3::getY() const {
+	return y;
+}
+
+void glm::Vec3::setY(double y) {
+	this->y = y;
+}
+
+double glm::Vec3::getZ() const {
+	return z;
+}
+
+void glm::Vec3::setZ(double z) {
+	this->z = z;
+}
+
+double glm::Vec3::getMagnitude() const{
+    return mag;
+}
+
+glm::Vec3 glm::Vec3::projection(glm::Vec3 v) {
+	double dot = this->dot(v);
+	double magSq = v.getMagnitude();
+	magSq *= magSq;
+	return v.mult(dot/magSq);
+}
+
+glm::Vec3 glm::Vec3::operator +(glm::Vec3 a) {
+	return glm::Vec3(a.getX() + x,
+				a.getY() + y,
+				a.getZ() + z );
+}
+
+glm::Vec3 glm::Vec3::operator -(glm::Vec3 a) {
+	return glm::Vec3(x - a.getX(),
+				y - a.getY(),
+				z - a.getZ() );
+}
+
+glm::Vec3 glm::Vec3::operator -() {
+	return glm::Vec3(-x,-y,-z);
+}
+
+glm::Vec3 glm::Vec3::operator *(const double s)const {
+	return glm::Vec3(x * s, y * s, z * s);
+}
+
+
+glm::Vec3 glm::Vec3::operator /(double s) {
+	if(s == 0)
+		throw 111;
+	return glm::Vec3(x / s, y / s, z / s);
+}
+
+
+bool glm::Vec3::operator ==(glm::Vec3 a) {
+	return x == a.getX() &&
+		   y == a.getY() &&
+		   z == a.getZ();
+}
+
+void glm::Vec3::operator=(glm::Vec3 a){
+	x = a.getX();
+	y = a.getY();
+	z = a.getZ();
+
+}
+
+//Facilidades de IO
+std::string glm::Vec3::to_string(){
+    std::stringstream stream;
+    stream << "X: " << x << " Y: " << y << " Z: " << z;
+    return stream.str();
+}
