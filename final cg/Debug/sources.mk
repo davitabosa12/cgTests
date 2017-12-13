@@ -26,7 +26,7 @@ SUBDIRS := \
 bin \
 include/glm/detail \
 . \
-models/coffee-pot/source/ad4abb8467314f59a50ebdd985d222f6 \
 models \
+models/coffee-pot/source/ad4abb8467314f59a50ebdd985d222f6 \
 src \
 

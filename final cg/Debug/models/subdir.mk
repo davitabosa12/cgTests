@@ -4,6 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 OBJ_SRCS += \
+../models/cena.obj \
 ../models/coffee-pot.obj \
 ../models/macaco.obj \
 ../models/macaco2.obj \

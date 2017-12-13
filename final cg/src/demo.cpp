@@ -13,7 +13,7 @@ float remap(float value, float low1, float high1, float low2, float high2){
 void ler(IndexedTriangleMesh &myMesh){
 	ToyParser parser;
 
-	parser.parse("models/pot.obj",myMesh,ToyParser::MODEL_COMPLETE);
+	parser.parse("models/cena.obj",myMesh,ToyParser::MODEL_NO_TEXTURE);
 
 
 }
@@ -40,9 +40,6 @@ void trataTeclado(unsigned char key, int x, int y){
 }
 
 void myPassiveMotionFunc(int x, int y){
-	float posx = remap(x,0.0f,600.0f, -2.0f, 2.0f);
-	float posy = remap(y,0.0f,600.0f, 2.0f, -2.0f);
-
 	c.mouseMove(x,y);
 
 }
@@ -50,7 +47,9 @@ void myPassiveMotionFunc(int x, int y){
 void drawSkybox(float size){
 	glDisable(GL_LIGHTING);
 	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_CULL_FACE);
 	glEnable(GL_TEXTURE_2D);
+	glDepthMask(GL_FALSE);
 	static bool lido = false;
 	if(!lido){
 
@@ -58,7 +57,7 @@ void drawSkybox(float size){
 		lido = true;
 	}
 	//TOP
-	Texture skybox("textures/sky.jpg");
+	Texture skybox("textures/img_test.png");
 	skybox.bind(0);
 	glBegin(GL_QUADS);
 		glTexCoord2f(1.0f,1.0f);
@@ -139,24 +138,38 @@ void drawSkybox(float size){
 
 	glEnable(GL_LIGHTING);
 	glEnable(GL_DEPTH_TEST);
+	glDepthMask(GL_TRUE);
 }
 void desenhe(){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 	glEnable(GL_TEXTURE_2D);
 	drawSkybox(50.0f);
+
 	glEnable(GL_TEXTURE_2D);
-	glEnable(GL_DEPTH_TEST);
+
+	//glEnable(GL_DEPTH_TEST);
 	glEnable(GL_NORMALIZE);
 	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
+
+
+	glEnable(GL_CULL_FACE);
 
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	glShadeModel(GL_FLAT);
-	GLfloat light_position[] = { 0, 0, 1.0, 0.0 };
+	glShadeModel(GL_SMOOTH);
+
+	glEnable(GL_LIGHT0);
+	GLfloat light_position[] = { 0.5, 1, 0.5, 1.0 };
 	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
 
+	glEnable(GL_LIGHT1);
+	GLfloat light2_position[] = { 0, 0, 1, 0.0 };
+	glLightfv(GL_LIGHT1, GL_POSITION, light2_position);
+
+	glEnable(GL_LIGHT2);
+	GLfloat light3_position[] = { 1, 0, 0, 0.0 };
+	glLightfv(GL_LIGHT2, GL_POSITION, light3_position);
 
 	static IndexedTriangleMesh myMesh;
 	static bool parsed =false;
@@ -172,10 +185,9 @@ void desenhe(){
 	glLoadIdentity();
 	//glOrtho(-1,1, -1,1, -1,1);
 	gluPerspective(45,1,0.5f,100);
-	//gluLookAt(-c.getPosition().x,c.getPosition().y,c.getPosition().z, -c.getViewDirection().x,-c.getViewDirection().y,0,  0,1,0);
 	glRotatef(-c.getViewDirection().x * 0.05,  0,1,0);
 	glRotatef(-c.getViewDirection().y * 0.05,  1,0,0);
-	glTranslatef(-c.getPosition().x,c.getPosition().y,c.getPosition().z);
+	glTranslatef(-c.getPosition().x,c.getPosition().y -2.0f,c.getPosition().z);
 	//================MODELVIEW=======================
 	glMatrixMode(GL_MODELVIEW);
 	glTranslatef(0,-0.5f,1);
@@ -205,7 +217,7 @@ int main( int argc, char** argv )
 	glutCreateWindow( "Cena" );
 	glutDisplayFunc( desenhe );
 	glutPassiveMotionFunc( myPassiveMotionFunc );
-	gluLookAt(0,0,1,  0,0,0,  0,1,0);
+	//gluLookAt(0,0,1,  0,0,0,  0,1,0);
 	glutKeyboardFunc( trataTeclado );
 	//glutMouseFunc( trataMouseClick );
 	//glutMotionFunc( trataMouseMove );
