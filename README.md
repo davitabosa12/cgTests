@@ -1,2 +1,2 @@
 # cgTests
-Testes de CG com OpenGL
+Testes de CG com OpenGL.
